@@ -27,8 +27,8 @@ public class Planet : MonoBehaviour
         {
             var planetRadius = transform.localScale.x / 2;
             var randomAngle = Random.Range(0, 2 * Mathf.PI);
-            var rootPosition =
-                new Vector2(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle)) * planetRadius;
+            var rootPosition = transform.position + 
+                new Vector3(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle)) * planetRadius;
 
             var plant = Instantiate(ResourceManager.Instance.Plant);
             plant.transform.position = rootPosition;
