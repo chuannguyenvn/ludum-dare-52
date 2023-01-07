@@ -60,7 +60,11 @@ public class PlantBranch : Scalable
         return Random.Range(0f, 1f) < value;
     }
 
-    private void GrowNewBranch()
+    public void GrowNewBranch()
+    {
+        StartCoroutine(GrowNewBranch_CO());
+    }
+    public IEnumerator GrowNewBranch_CO()
     {
         var branchObj = Instantiate(ResourceManager.Instance.PlantBranch, transform);
 
@@ -72,12 +76,16 @@ public class PlantBranch : Scalable
         branchObj.CalculateHeight();
         branchObj.HingeJoint2D.connectedBody = rigidbody2D;
         branchObj.ParentBranch = this;
-
-        branchObj.transform.localScale = new Vector3(transform.localScale.x, 0, 1);
-        branchObj.transform.DOScaleY(branchObj.height, 0.5f)
-            .SetEase(Ease.InOutSine)
-            .OnComplete(() => branchObj.Init(depth + 1));
         branchObj.transform.SetParent(transform.parent);
+        
+        branchObj.branchBody.End = Vector3.zero;
+        while (branchObj.branchBody.End.magnitude < 0.99f)
+        {
+            branchObj.branchBody.End += Vector3.up * Time.deltaTime;
+            yield return null;
+        }
+
+        branchObj.Init(depth + 1);
     }
 
     public void DestroyBranch()
