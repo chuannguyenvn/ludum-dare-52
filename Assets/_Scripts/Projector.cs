@@ -9,8 +9,8 @@ public class Projector : MonoBehaviour
 {
     [SerializeField] private LineRenderer trajectoryLine;
     [SerializeField] private int maxSimulatedFrameCount = 100;
-    [FormerlySerializedAs("frameSkipMultiplier")] [SerializeField] private int physicsFrameSkipMultiplier = 5;
-    
+    [SerializeField] private int physicsFrameSkipMultiplier = 5;
+
     private Scene simulationScene;
     private PhysicsScene2D physicsScene;
     private Camera mainCamera;
@@ -38,28 +38,19 @@ public class Projector : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        var worldMousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition).NewZ(0);
-        var startPosition = transform.position;
-        var velocity = worldMousePos - startPosition;
-
-        SimulateTrajectory(ResourceManager.Instance.Machine, startPosition, velocity);
-    }
-
-    public void SimulateTrajectory(Machine machine, Vector3 startPosition, Vector3 velocity)
+    public void SimulateTrajectory(Machine machine, Vector2 startPosition, Vector2 velocity)
     {
         var ghostMachine = Instantiate(machine, startPosition, Quaternion.identity);
         SceneManager.MoveGameObjectToScene(ghostMachine.gameObject, simulationScene);
         ghostMachine.SetVelocity(velocity);
-    
+
         trajectoryLine.positionCount = maxSimulatedFrameCount;
         for (int i = 0; i < maxSimulatedFrameCount; i++)
         {
             physicsScene.Simulate(Time.fixedDeltaTime * physicsFrameSkipMultiplier);
             trajectoryLine.SetPosition(i, ghostMachine.transform.position);
         }
-    
+
         Destroy(ghostMachine.gameObject);
     }
 }
