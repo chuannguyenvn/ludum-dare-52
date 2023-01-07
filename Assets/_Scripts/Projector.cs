@@ -13,12 +13,10 @@ public class Projector : MonoBehaviour
 
     private Scene simulationScene;
     private PhysicsScene2D physicsScene;
-    private Camera mainCamera;
 
     private void Start()
     {
         CreatePhysicsScene();
-        mainCamera = Camera.main;
     }
 
     private void CreatePhysicsScene()
@@ -44,11 +42,12 @@ public class Projector : MonoBehaviour
         SceneManager.MoveGameObjectToScene(ghostMachine.gameObject, simulationScene);
         ghostMachine.SetVelocity(velocity);
 
-        trajectoryLine.positionCount = maxSimulatedFrameCount;
+        trajectoryLine.positionCount = maxSimulatedFrameCount + 1;
+        trajectoryLine.SetPosition(0, transform.position);
         for (int i = 0; i < maxSimulatedFrameCount; i++)
         {
             physicsScene.Simulate(Time.fixedDeltaTime * physicsFrameSkipMultiplier);
-            trajectoryLine.SetPosition(i, ghostMachine.transform.position);
+            trajectoryLine.SetPosition(i + 1, ghostMachine.transform.position);
         }
 
         Destroy(ghostMachine.gameObject);

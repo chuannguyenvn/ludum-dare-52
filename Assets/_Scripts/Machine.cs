@@ -7,6 +7,6 @@ public class Machine : MonoBehaviour
 
     public void SetVelocity(Vector2 velocity)
     {
-        rigidbody2D.AddForce(velocity);
+        rigidbody2D.velocity = velocity;
     }
 }

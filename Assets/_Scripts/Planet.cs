@@ -7,10 +7,11 @@ public class Planet : MonoBehaviour
 {
     [SerializeField] private GravityZone gravityZone;
     [SerializeField] private float planetGravityRadius;
+    [SerializeField] private float planetGravityMagnitude;
 
-    private void Start()
+    private void Awake()
     {
-        gravityZone.SetRadius(planetGravityRadius);
+        gravityZone.Init(planetGravityRadius, planetGravityMagnitude);
     }
 
     public void Hide()
