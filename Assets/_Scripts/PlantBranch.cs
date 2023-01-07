@@ -2,6 +2,7 @@
 using Shapes;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class PlantBranch : MonoBehaviour
@@ -17,6 +18,10 @@ public class PlantBranch : MonoBehaviour
     private float initialRotation;
 
     [SerializeField] private Line branchBody;
+
+    [SerializeField] private float heightConstant;
+    [SerializeField] private float heightPow;
+    [SerializeField] private float newBranchProbabilityPow;
 
     public void Init(int depth)
     {
@@ -36,7 +41,7 @@ public class PlantBranch : MonoBehaviour
 
     private void CalculateHeight()
     {
-        height = Mathf.Pow(1.1f, -depth);
+        height = Mathf.Pow(heightPow, -depth) * heightConstant;
     }
 
     public void TryGrowNewBranch(bool isInit = false)
@@ -48,7 +53,7 @@ public class PlantBranch : MonoBehaviour
 
     private bool IsAllowedToGrowNewBranch()
     {
-        var value = Mathf.Pow(1.25f, -depth);
+        var value = Mathf.Pow(newBranchProbabilityPow, -depth);
         return Random.Range(0f, 1f) < value;
     }
 

@@ -53,6 +53,9 @@ MonoBehaviour:
   rigidbody2D: {fileID: 7496505948042291627}
   counterAngularVelocity: 0
   branchBody: {fileID: 7496505949927755249}
+  heightConstant: 1
+  heightPow: 1.1
+  newBranchProbabilityPow: 1.5
 --- !u!61 &7496505948042291626
 BoxCollider2D:
   m_ObjectHideFlags: 0

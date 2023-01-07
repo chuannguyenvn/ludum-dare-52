@@ -252,6 +252,10 @@ PrefabInstance:
       propertyPath: Planets.Array.data[0]
       value: 
       objectReference: {fileID: 1934803220}
+    - target: {fileID: 2450617427478220216, guid: 78efce02c0fe75f4cb36babbe745acb6, type: 3}
+      propertyPath: Planets.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2450617427478220217, guid: 78efce02c0fe75f4cb36babbe745acb6, type: 3}
       propertyPath: m_Name
       value: Planet Manager
