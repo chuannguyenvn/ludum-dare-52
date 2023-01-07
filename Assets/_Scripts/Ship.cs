@@ -7,7 +7,7 @@ public class Ship : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rigidbody2D;
     [SerializeField] private float movementSpeedMultiplier = 1f;
-    
+
     [SerializeField] private Projector projector;
     private Camera mainCamera;
 
@@ -34,7 +34,7 @@ public class Ship : MonoBehaviour
     {
         var worldMousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition).NewZ(0);
         var startPosition = transform.position;
-        var velocity = (worldMousePos - startPosition) * launchForceMultiplier;
+        var velocity = (worldMousePos - startPosition).normalized * launchForceMultiplier;
 
         if (Input.GetMouseButton(0) && launchCooldownTimer < 0)
         {

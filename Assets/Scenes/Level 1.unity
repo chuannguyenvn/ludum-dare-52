@@ -313,6 +313,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4502685731882129948, guid: d57659e810fb30f4e8ed9911ef7b7b25, type: 3}
+      propertyPath: maxSimulatedFrameCount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4502685731882129948, guid: d57659e810fb30f4e8ed9911ef7b7b25, type: 3}
+      propertyPath: physicsFrameSkipMultiplier
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4502685731937834681, guid: d57659e810fb30f4e8ed9911ef7b7b25, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -357,9 +365,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4502685731937834686, guid: d57659e810fb30f4e8ed9911ef7b7b25, type: 3}
+      propertyPath: launchForceMultiplier
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4502685731937834687, guid: d57659e810fb30f4e8ed9911ef7b7b25, type: 3}
       propertyPath: m_Name
       value: Ship
+      objectReference: {fileID: 0}
+    - target: {fileID: 4502685732369413054, guid: d57659e810fb30f4e8ed9911ef7b7b25, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 16384
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d57659e810fb30f4e8ed9911ef7b7b25, type: 3}
