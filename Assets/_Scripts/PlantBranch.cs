@@ -12,7 +12,6 @@ public class PlantBranch : Scalable
     public PlantBranch ParentBranch;
     private int depth;
     private float height;
-    private Vector3 initialScale;
 
     public HingeJoint2D HingeJoint2D;
     [SerializeField] private Rigidbody2D rigidbody2D;
@@ -51,8 +50,8 @@ public class PlantBranch : Scalable
     public void TryGrowNewBranch(bool isInit = false)
     {
         if (!isInit && transform.root.GetComponent<PlantBranch>() == null) return;
-        if (IsAllowedToGrowNewBranch()) StartCoroutine(GrowNewBranch());
-        if (IsAllowedToGrowNewBranch()) StartCoroutine(GrowNewBranch());
+        if (IsAllowedToGrowNewBranch()) GrowNewBranch();
+        if (IsAllowedToGrowNewBranch()) GrowNewBranch();
     }
 
     private bool IsAllowedToGrowNewBranch()
@@ -61,7 +60,7 @@ public class PlantBranch : Scalable
         return Random.Range(0f, 1f) < value;
     }
 
-    private IEnumerator GrowNewBranch()
+    private void GrowNewBranch()
     {
         var branchObj = Instantiate(ResourceManager.Instance.PlantBranch, transform);
 
@@ -78,10 +77,7 @@ public class PlantBranch : Scalable
         branchObj.transform.DOScaleY(branchObj.height, 0.5f)
             .SetEase(Ease.InOutSine)
             .OnComplete(() => branchObj.Init(depth + 1));
-        yield return null;
-        // yield return new WaitForSeconds(0.2f);
-        //
-        // branchObj.Init(depth + 1);
+        branchObj.transform.SetParent(transform.parent);
     }
 
     public void DestroyBranch()

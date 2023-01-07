@@ -30,8 +30,8 @@ public class Planet : Scalable
         for (int i = 0; i < count; i++)
         {
             var planetRadius = transform.localScale.x / 2;
-            var randomCenterAngle = 2 * Mathf.PI / count * (i + 1);
-            var randomAngle = randomCenterAngle + Random.Range(-Mathf.PI / 4, Mathf.PI / 4);
+            var randomCenterAngle = 2 * Mathf.PI / count * i;
+            var randomAngle = randomCenterAngle;
             var rootPosition = transform.position + 
                 new Vector3(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle)) * planetRadius;
 
