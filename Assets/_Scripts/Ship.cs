@@ -64,4 +64,9 @@ public class Ship : MonoBehaviour
 
         launchCooldownTimer = launchCooldown;
     }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Branch")) Destroy(col.gameObject);
+    }
 }

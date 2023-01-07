@@ -7,13 +7,13 @@ using Random = UnityEngine.Random;
 
 public class Planet : MonoBehaviour
 {
-    [SerializeField] private GravityZone gravityZone;
+    [FormerlySerializedAs("gravityZone")] [SerializeField] private PlanetGravityZone planetGravityZone;
     [SerializeField] private float planetGravityRadius;
     [SerializeField] private float planetGravityMagnitude;
 
     private void Awake()
     {
-        gravityZone.Init(planetGravityRadius, planetGravityMagnitude);
+        planetGravityZone.Init(planetGravityRadius, planetGravityMagnitude);
     }
 
     private void Start()

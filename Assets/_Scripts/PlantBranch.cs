@@ -10,6 +10,7 @@ public class PlantBranch : MonoBehaviour
     public PlantBranch ParentBranch;
     private int depth;
     private float height;
+    private Vector3 initialScale;
 
     public HingeJoint2D HingeJoint2D;
     [SerializeField] private Rigidbody2D rigidbody2D;
@@ -27,7 +28,7 @@ public class PlantBranch : MonoBehaviour
     {
         this.depth = depth;
         CalculateHeight();
-        transform.localScale = new Vector3(transform.localScale.x, height, 1);
+        initialScale = transform.localScale = new Vector3(transform.localScale.x, height, 1);
         TryGrowNewBranch(true);
         initialRotation = transform.localRotation.eulerAngles.z;
     }
@@ -70,6 +71,12 @@ public class PlantBranch : MonoBehaviour
         branchObj.HingeJoint2D.connectedBody = rigidbody2D;
         branchObj.ParentBranch = this;
         branchObj.Init(depth + 1);
+    }
+
+    public void Scale(float scale)
+    {
+        scale = Mathf.Pow(Mathf.Clamp01(scale), 2);
+        transform.localScale = initialScale * scale;
     }
 
     public void DestroyBranch()
