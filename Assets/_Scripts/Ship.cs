@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Launchpad : MonoBehaviour
+public class Ship : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rigidbody2D;
     [SerializeField] private float movementSpeedMultiplier = 1f;
@@ -42,7 +42,7 @@ public class Launchpad : MonoBehaviour
         }
         else
         {
-            projector.SimulateTrajectory(ResourceManager.Instance.Machine, startPosition, velocity);
+            projector.SimulateTrajectory(ResourceManager.Instance.saw, startPosition, velocity);
         }
     }
 
@@ -56,7 +56,7 @@ public class Launchpad : MonoBehaviour
 
     private void ShootMachine(Vector2 velocity)
     {
-        var machineObj = Instantiate(ResourceManager.Instance.Machine,
+        var machineObj = Instantiate(ResourceManager.Instance.saw,
             transform.position,
             Quaternion.identity);
 

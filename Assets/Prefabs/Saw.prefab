@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 8082812402851800663}
   - component: {fileID: 8082812402851800662}
   m_Layer: 7
-  m_Name: Machine
+  m_Name: Saw
   m_TagString: Saw
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Machine : MonoBehaviour
+public class Saw : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rigidbody2D;
     [SerializeField] private float effectiveDuration = 5f;

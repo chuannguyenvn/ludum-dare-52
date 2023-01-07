@@ -36,9 +36,9 @@ public class Projector : MonoBehaviour
         }
     }
 
-    public void SimulateTrajectory(Machine machine, Vector2 startPosition, Vector2 velocity)
+    public void SimulateTrajectory(Saw saw, Vector2 startPosition, Vector2 velocity)
     {
-        var ghostMachine = Instantiate(machine, startPosition, Quaternion.identity);
+        var ghostMachine = Instantiate(saw, startPosition, Quaternion.identity);
         SceneManager.MoveGameObjectToScene(ghostMachine.gameObject, simulationScene);
         ghostMachine.SetVelocity(velocity);
 

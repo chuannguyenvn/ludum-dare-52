@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 1559305958}
   - component: {fileID: 1559305957}
   m_Layer: 6
-  m_Name: Lauchpad
+  m_Name: Ship
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

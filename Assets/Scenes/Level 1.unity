@@ -359,7 +359,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4502685731937834687, guid: d57659e810fb30f4e8ed9911ef7b7b25, type: 3}
       propertyPath: m_Name
-      value: Lauchpad
+      value: Ship
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d57659e810fb30f4e8ed9911ef7b7b25, type: 3}
@@ -370,6 +370,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5592890273581422904, guid: 71fd50ba30111c7479b99a0ac1acc476, type: 3}
+      propertyPath: saw
+      value: 
+      objectReference: {fileID: 8082812402851800664, guid: a287566f040ac654eae1aad2b0019964, type: 3}
     - target: {fileID: 5592890273581422910, guid: 71fd50ba30111c7479b99a0ac1acc476, type: 3}
       propertyPath: m_Name
       value: Resource Manager
