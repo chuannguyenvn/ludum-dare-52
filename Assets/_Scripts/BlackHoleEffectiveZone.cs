@@ -3,7 +3,7 @@ using Shapes;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class ShipSuckingZone : MonoBehaviour
+public class BlackHoleEffectiveZone : MonoBehaviour
 {
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private Disc disc;
@@ -20,11 +20,15 @@ public class ShipSuckingZone : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         var force = (transform.position - other.transform.position).normalized * magnitude;
-        if (layerMask == (layerMask | 1 << other.gameObject.layer))
-        {
-            other.attachedRigidbody.AddForce(force);
-            other.GetComponent<PlantBranch>()
-                .Scale(Vector2.Distance(other.transform.position, transform.position) / radius);
-        }
+        other.attachedRigidbody.AddForce(force);
+        var scale = Vector2.Distance(other.transform.position, transform.position) / radius;
+        
+        if (other.gameObject.GetComponent<Scalable>() is Scalable scalable) scalable.Scale(scale);
+
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.GetComponent<Scalable>() is Scalable scalable) scalable.Scale(1);
     }
 }

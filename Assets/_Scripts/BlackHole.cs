@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ship : MonoBehaviour
+public class BlackHole : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rigidbody2D;
     [SerializeField] private float movementSpeedMultiplier = 1f;
@@ -26,24 +26,7 @@ public class Ship : MonoBehaviour
     {
         launchCooldownTimer -= Time.deltaTime;
 
-        HandleAiming();
         HandleMovement();
-    }
-
-    private void HandleAiming()
-    {
-        var worldMousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition).NewZ(0);
-        var startPosition = transform.position;
-        var velocity = (worldMousePos - startPosition).normalized * launchForceMultiplier;
-
-        if (Input.GetMouseButton(0) && launchCooldownTimer < 0)
-        {
-            ShootMachine(velocity);
-        }
-        else
-        {
-            projector.SimulateTrajectory(ResourceManager.Instance.saw, startPosition, velocity);
-        }
     }
 
     private void HandleMovement()
@@ -54,19 +37,8 @@ public class Ship : MonoBehaviour
         rigidbody2D.velocity = new Vector2(xOffset, yOffset) * movementSpeedMultiplier;
     }
 
-    private void ShootMachine(Vector2 velocity)
-    {
-        var machineObj = Instantiate(ResourceManager.Instance.saw,
-            transform.position,
-            Quaternion.identity);
-
-        machineObj.SetVelocity(velocity);
-
-        launchCooldownTimer = launchCooldown;
-    }
-
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Branch")) Destroy(col.gameObject);
+        Destroy(col.gameObject);
     }
 }

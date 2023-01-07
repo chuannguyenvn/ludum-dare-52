@@ -5,19 +5,22 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-public class Planet : MonoBehaviour
+public class Planet : Scalable
 {
-    [FormerlySerializedAs("gravityZone")] [SerializeField] private PlanetGravityZone planetGravityZone;
+    [SerializeField] private PlanetGravityZone planetGravityZone;
     [SerializeField] private float planetGravityRadius;
     [SerializeField] private float planetGravityMagnitude;
-
+    private float initialScale;
+    
     private void Awake()
     {
         planetGravityZone.Init(planetGravityRadius, planetGravityMagnitude);
+        initialScale = transform.localScale.x;
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         InitializePlants();
     }
 
@@ -32,7 +35,7 @@ public class Planet : MonoBehaviour
             var rootPosition = transform.position + 
                 new Vector3(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle)) * planetRadius;
 
-            var plant = Instantiate(ResourceManager.Instance.Plant);
+            var plant = Instantiate(ResourceManager.Instance.Plant, transform);
             plant.transform.position = rootPosition;
             plant.transform.rotation = Quaternion.Euler(0, 0, randomAngle * Mathf.Rad2Deg);
         }

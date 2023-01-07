@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-public class PlantBranch : MonoBehaviour
+public class PlantBranch : Scalable
 {
     public PlantBranch ParentBranch;
     private int depth;
@@ -82,12 +82,6 @@ public class PlantBranch : MonoBehaviour
         // yield return new WaitForSeconds(0.2f);
         //
         // branchObj.Init(depth + 1);
-    }
-
-    public void Scale(float scale)
-    {
-        scale = Mathf.Pow(Mathf.Clamp01(scale), 2);
-        transform.localScale = initialScale * scale;
     }
 
     public void DestroyBranch()
