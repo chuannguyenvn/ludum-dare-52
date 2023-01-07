@@ -1,4 +1,5 @@
 ﻿using System;
+using Shapes;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -15,13 +16,14 @@ public class PlantBranch : MonoBehaviour
 
     private float initialRotation;
 
+    [SerializeField] private Line branchBody;
+
     public void Init(int depth)
     {
         this.depth = depth;
         CalculateHeight();
         transform.localScale = new Vector3(transform.localScale.x, height, 1);
-        if (IsAllowedToGrowNewBranch()) GrowNewBranch();
-        if (IsAllowedToGrowNewBranch()) GrowNewBranch();
+        TryGrowNewBranch(true);
         initialRotation = transform.localRotation.eulerAngles.z;
     }
 
@@ -34,7 +36,14 @@ public class PlantBranch : MonoBehaviour
 
     private void CalculateHeight()
     {
-        height = Mathf.Pow(1.25f, -depth);
+        height = Mathf.Pow(1.1f, -depth);
+    }
+
+    public void TryGrowNewBranch(bool isInit = false)
+    {
+        if (!isInit && transform.root.GetComponent<PlantBranch>() == null) return;
+        if (IsAllowedToGrowNewBranch()) GrowNewBranch();
+        if (IsAllowedToGrowNewBranch()) GrowNewBranch();
     }
 
     private bool IsAllowedToGrowNewBranch()
@@ -43,7 +52,7 @@ public class PlantBranch : MonoBehaviour
         return Random.Range(0f, 1f) < value;
     }
 
-    public void GrowNewBranch()
+    private void GrowNewBranch()
     {
         var branchObj = Instantiate(ResourceManager.Instance.PlantBranch, transform);
 
@@ -52,8 +61,20 @@ public class PlantBranch : MonoBehaviour
 
         var randomRotation = Random.Range(0, 2) == 0 ? -30 : 30;
         branchObj.transform.localRotation = quaternion.Euler(0, 0, randomRotation);
-        
+
         branchObj.HingeJoint2D.connectedBody = rigidbody2D;
+        branchObj.ParentBranch = this;
         branchObj.Init(depth + 1);
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Saw"))
+        {
+            if (ParentBranch != null) ParentBranch.TryGrowNewBranch();
+            transform.DetachChildren();
+            Destroy(branchBody.gameObject);
+            Destroy(gameObject);
+        }
     }
 }
