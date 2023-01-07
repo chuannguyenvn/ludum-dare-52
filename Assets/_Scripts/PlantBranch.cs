@@ -72,14 +72,11 @@ public class PlantBranch : MonoBehaviour
         branchObj.Init(depth + 1);
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    public void DestroyBranch()
     {
-        if (col.gameObject.CompareTag("Saw"))
-        {
-            if (ParentBranch != null) ParentBranch.TryGrowNewBranch();
-            transform.DetachChildren();
-            Destroy(branchBody.gameObject);
-            Destroy(gameObject);
-        }
+        if (ParentBranch != null) ParentBranch.TryGrowNewBranch();
+        transform.DetachChildren();
+        Destroy(branchBody.gameObject);
+        Destroy(gameObject);
     }
 }
