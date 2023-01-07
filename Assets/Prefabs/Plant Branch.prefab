@@ -49,6 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ParentBranch: {fileID: 7496505948042291625}
+  Depth: 0
+  HingeJoint2D: {fileID: 7496505948042291624}
   rigidbody2D: {fileID: 7496505948042291627}
   counterAngularVelocity: 0
 --- !u!61 &7496505948042291626
