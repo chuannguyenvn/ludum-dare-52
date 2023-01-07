@@ -23,10 +23,12 @@ public class Planet : MonoBehaviour
 
     private void InitializePlants()
     {
-        for (int i = 0; i < Random.Range(5, 10); i++)
+        var count = Random.Range(8, 12);
+        for (int i = 0; i < count; i++)
         {
             var planetRadius = transform.localScale.x / 2;
-            var randomAngle = Random.Range(0, 2 * Mathf.PI);
+            var randomCenterAngle = 2 * Mathf.PI / count * (i + 1);
+            var randomAngle = randomCenterAngle + Random.Range(-Mathf.PI / 4, Mathf.PI / 4);
             var rootPosition = transform.position + 
                 new Vector3(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle)) * planetRadius;
 
