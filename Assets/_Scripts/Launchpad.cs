@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Launchpad : MonoBehaviour
 {
+    [SerializeField] private Rigidbody2D rigidbody2D;
+    [SerializeField] private float movementSpeedMultiplier = 1f;
+    
     [SerializeField] private Projector projector;
     private Camera mainCamera;
 
@@ -23,6 +26,12 @@ public class Launchpad : MonoBehaviour
     {
         launchCooldownTimer -= Time.deltaTime;
 
+        HandleAiming();
+        HandleMovement();
+    }
+
+    private void HandleAiming()
+    {
         var worldMousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition).NewZ(0);
         var startPosition = transform.position;
         var velocity = (worldMousePos - startPosition) * launchForceMultiplier;
@@ -35,6 +44,14 @@ public class Launchpad : MonoBehaviour
         {
             projector.SimulateTrajectory(ResourceManager.Instance.Machine, startPosition, velocity);
         }
+    }
+
+    private void HandleMovement()
+    {
+        var xOffset = Input.GetAxis("Horizontal");
+        var yOffset = Input.GetAxis("Vertical");
+
+        rigidbody2D.velocity = new Vector2(xOffset, yOffset) * movementSpeedMultiplier;
     }
 
     private void ShootMachine(Vector2 velocity)

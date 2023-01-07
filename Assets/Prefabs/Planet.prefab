@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1178957000}
   - component: {fileID: 1178956999}
   - component: {fileID: 1178956998}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Disc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 6553324581473852036}
   - component: {fileID: 6553324581473852035}
   - component: {fileID: 6553324581473852034}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Planet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,6 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravityZone: {fileID: 6553324581502818498}
   planetGravityRadius: 3
+  planetGravityMagnitude: 5
 --- !u!50 &6553324581473852035
 Rigidbody2D:
   serializedVersion: 4
@@ -232,7 +233,7 @@ GameObject:
   - component: {fileID: 6553324581502818496}
   - component: {fileID: 6553324581502818498}
   - component: {fileID: 6553324581502818497}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gravity Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6553324581688040284}
   - component: {fileID: 6553324581688040285}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
