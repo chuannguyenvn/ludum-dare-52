@@ -29,7 +29,7 @@ public class PlantBranch : MonoBehaviour
     {
         counterAngularVelocity =
             Mathf.DeltaAngle(transform.localRotation.eulerAngles.z, initialRotation);
-        rigidbody2D.angularVelocity = counterAngularVelocity * 3;
+        rigidbody2D.angularVelocity = counterAngularVelocity * 5;
     }
 
     private void CalculateHeight()
@@ -39,7 +39,7 @@ public class PlantBranch : MonoBehaviour
 
     private bool IsAllowedToGrowNewBranch()
     {
-        var value = Mathf.Pow(2, -depth);
+        var value = Mathf.Pow(1.25f, -depth);
         return Random.Range(0f, 1f) < value;
     }
 
