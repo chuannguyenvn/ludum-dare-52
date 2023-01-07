@@ -272,11 +272,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7496505948042291624, guid: 0940d33fe5393324bb0e21f99a1ecc82, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 0.318
+      value: -0.116
       objectReference: {fileID: 0}
     - target: {fileID: 7496505948042291624, guid: 0940d33fe5393324bb0e21f99a1ecc82, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -0.28
+      value: -0.416
       objectReference: {fileID: 0}
     - target: {fileID: 7496505948042291624, guid: 0940d33fe5393324bb0e21f99a1ecc82, type: 3}
       propertyPath: m_AutoConfigureConnectedAnchor
@@ -373,6 +373,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -446,6 +447,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7229865c79ffa64bbc5d01077178bf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 1559305956}
 --- !u!1 &558347966
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,11 +579,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7496505948042291624, guid: 0940d33fe5393324bb0e21f99a1ecc82, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.273
+      value: 0.38
       objectReference: {fileID: 0}
     - target: {fileID: 7496505948042291624, guid: 0940d33fe5393324bb0e21f99a1ecc82, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 0.316
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7496505948042291624, guid: 0940d33fe5393324bb0e21f99a1ecc82, type: 3}
       propertyPath: m_AutoConfigureConnectedAnchor
@@ -577,6 +591,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0940d33fe5393324bb0e21f99a1ecc82, type: 3}
+--- !u!4 &1559305956 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4502685731937834681, guid: d57659e810fb30f4e8ed9911ef7b7b25, type: 3}
+  m_PrefabInstance: {fileID: 4502685733486512221}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1650624771
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -634,11 +653,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7496505948042291624, guid: 0940d33fe5393324bb0e21f99a1ecc82, type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -0.116
+      value: -0.273
       objectReference: {fileID: 0}
     - target: {fileID: 7496505948042291624, guid: 0940d33fe5393324bb0e21f99a1ecc82, type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: -0.416
+      value: 0.316
       objectReference: {fileID: 0}
     - target: {fileID: 7496505948042291624, guid: 0940d33fe5393324bb0e21f99a1ecc82, type: 3}
       propertyPath: m_AutoConfigureConnectedAnchor
