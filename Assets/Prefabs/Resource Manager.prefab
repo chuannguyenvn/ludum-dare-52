@@ -44,4 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49a045e12cc4683a20b58a7b16c4f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Machine: {fileID: 0}
+  Machine: {fileID: 8082812402851800664, guid: a287566f040ac654eae1aad2b0019964, type: 3}
+  Plant: {fileID: 4738237418399633708, guid: 5d1ae60c4f8f6994ca17a27e7fae3bd2, type: 3}
+  PlantBranch: {fileID: 7496505948042291625, guid: 0940d33fe5393324bb0e21f99a1ecc82, type: 3}
