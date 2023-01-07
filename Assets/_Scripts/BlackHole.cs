@@ -31,10 +31,8 @@ public class BlackHole : MonoBehaviour
 
     private void HandleMovement()
     {
-        var xOffset = Input.GetAxis("Horizontal");
-        var yOffset = Input.GetAxis("Vertical");
-
-        rigidbody2D.velocity = new Vector2(xOffset, yOffset) * movementSpeedMultiplier;
+        var velocity = mainCamera.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        rigidbody2D.velocity = velocity * movementSpeedMultiplier;
     }
 
     private void OnCollisionEnter2D(Collision2D col)
