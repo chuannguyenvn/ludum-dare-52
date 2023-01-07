@@ -18,7 +18,14 @@ public class GravityZone : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        other.attachedRigidbody.AddForce((transform.position - other.transform.position).normalized *
-                                         magnitude);
+        var force = (transform.position - other.transform.position).normalized * magnitude;
+        if (other.gameObject.layer == 9)
+        {
+            other.attachedRigidbody.AddForce(-force);
+        }
+        else
+        {
+            other.attachedRigidbody.AddForce(force);
+        }
     }
 }
